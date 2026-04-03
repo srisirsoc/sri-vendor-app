@@ -1,0 +1,38 @@
+.call-main {
+    width: 100%;
+    min-height: 100vh;
+    background: #0e0e0e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    font-family: var(--font-family);
+    overflow: hidden;
+    position: relative;
+}
+
+.reconnecting-banner {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-dark);
+    color: var(--bg);
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.call-main .call-card {
+    width: 100%;
+    max-width: 420px;
+}
+
+@media (max-width: 480px) {
+    .reconnecting-banner {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+}

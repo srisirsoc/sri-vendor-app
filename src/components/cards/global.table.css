@@ -1,0 +1,125 @@
+/* Table container for scroll on small screens */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table-container h2 {
+    font-size: 20px;
+    font-weight: bold;
+    word-spacing: 1px;
+    margin: 5px 0;
+    text-align: center;
+    color: #504545;
+}
+
+/* Table */
+.global-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font);
+    font-size: 14px;
+    color: var(--text);
+}
+
+.global-table th,
+.global-table td {
+    padding: 10px 12px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.global-table th {
+    color: #1f1818;
+    border-color: #6d6767;
+}
+
+/* Zebra striping */
+.global-table tbody tr:nth-child(even) {
+    background: rgba(55, 194, 204, 0.05);
+}
+
+/* Hover effect */
+.global-table tbody tr:hover {
+    background: rgba(55, 194, 204, 0.1);
+}
+
+/* Status badges */
+.status-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 999px;
+    text-transform: uppercase;
+}
+
+.status-badge.complete {
+    background: rgba(7, 116, 56, 0.12);
+    color: var(--success);
+}
+
+.status-badge.pending {
+    background: rgba(245, 158, 11, 0.12);
+    color: var(--theme);
+}
+
+.status-badge.failed {
+    background: rgba(239, 68, 68, 0.12);
+    color: var(--danger);
+}
+
+/* Action buttons as icons */
+.table-icon-btn {
+    padding: 4px;
+    margin-right: 4px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.table-icon-btn.view {
+    background: var(--theme);
+}
+
+.table-icon-btn.view:hover {
+    background: #2aaab3;
+}
+
+.table-icon-btn.edit {
+    background: var(--success);
+}
+
+.table-icon-btn.edit:hover {
+    background: #065f36;
+}
+
+.table-icon-btn.delete {
+    background: var(--danger);
+}
+
+.table-icon-btn.delete:hover {
+    background: #c42525;
+}
+
+/* Actions column alignment */
+.actions-column {
+    display: flex;
+    gap: 4px;
+}
+
+
+/* Responsive table font for small screens */
+@media (max-width: 480px) {
+
+    .global-table th,
+    .global-table td {
+        padding: 8px 6px;
+        font-size: 13px;
+    }
+}

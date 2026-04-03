@@ -1,0 +1,21 @@
+.hide-0 {
+  display: none;
+}
+
+@media all and (max-width: 1200px) {
+  .hide-2 {
+    display: none;
+  }
+}
+
+@media all and (max-width: 1000px) {
+  .hide-3 {
+    display: none;
+  }
+}
+
+@media all and (max-width: 821px) {
+  .hide-4 {
+    display: none;
+  }
+}

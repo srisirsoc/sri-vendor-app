@@ -1,0 +1,53 @@
+.sm-toast {
+    padding: 16px;
+}
+
+.sm-toast-content {
+    font-size: 14px;
+    color: #333;
+}
+
+.sm-toast-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.sm-toast-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.2s ease;
+}
+
+.sm-toast-btn.resume {
+    background-color: #1976d2;
+    color: white;
+}
+
+.sm-toast-btn.resume:hover {
+    background-color: #125aa0;
+}
+
+.sm-toast-btn.terminate {
+    background-color: #f44336;
+    color: white;
+}
+
+.sm-toast-btn.terminate:hover {
+    background-color: #c62828;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

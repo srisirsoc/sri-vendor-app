@@ -1,0 +1,60 @@
+/* Default container styles */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+
+/* Fluid container overrides */
+.container.fluid {
+  max-width: 100%;
+}
+
+/* Device-specific max-widths */
+@media (min-width: 640px) {
+  .container:not(.fluid) {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container:not(.fluid) {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container:not(.fluid) {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container:not(.fluid) {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1580px) {
+  .container:not(.fluid) {
+    max-width: 1580px;
+  }
+}
+
+/* Optional: responsive padding adjustment */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

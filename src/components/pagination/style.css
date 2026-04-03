@@ -1,0 +1,131 @@
+:root {
+    --blue: #37C2CC;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --bg: #ffffff;
+    --border: #e5e7eb;
+    --radius: 12px;
+    --transition: 0.25s ease;
+}
+
+.pagination-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    max-width: 300px;
+    position: relative;
+}
+
+.pagination-list {
+    display: flex;
+    gap: 6px;
+    list-style: none;
+    padding: 0;
+    margin: 0 50px;
+    /* space for fixed icons */
+    max-width: 300px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+/* Hide scrollbar */
+.pagination-list::-webkit-scrollbar {
+    display: none;
+}
+
+.pagination-item {
+    min-width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.pagination-item:hover:not(.active):not(.disabled) {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+}
+
+.pagination-item.active {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+}
+
+.pagination-item.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Fixed Prev/Next Icons */
+.pagination-fixed {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.pagination-fixed:hover:not(.disabled) {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+}
+
+.pagination-fixed.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-left {
+    left: 0;
+}
+
+.pagination-right {
+    right: 0;
+}
+
+/* Responsive: smaller size on mobile */
+@media (max-width: 480px) {
+
+    .pagination-item,
+    .pagination-fixed {
+        min-width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+
+    .pagination-list {
+        margin: 0 40px;
+        /* smaller space for icons */
+    }
+}

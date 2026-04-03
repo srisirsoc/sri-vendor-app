@@ -1,0 +1,7 @@
+RAZORPAY_KEY_ID=rzp_test_SCNLaIAtqgaZF4
+VITE_MODE=PROD
+VITE_BASE_URL=https://api.mchacha.com/srisir/api/v1
+VITE_SOCKET_URL=https://api.mchacha.com
+# VITE_MODE=DEV
+# VITE_BASE_URL=http://localhost:5001/api/v1
+# VITE_SOCKET_URL=http://localhost:5001

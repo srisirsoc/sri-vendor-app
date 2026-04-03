@@ -1,0 +1,92 @@
+:root {
+    --theme: #37C2CC;
+    --success: #077438;
+    --danger: #ef4444;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --bg: #ffffff;
+    --bg-soft: #f9fefe;
+    --border: #e5e7eb;
+    --radius: 12px;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Container MUST take full width */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+}
+
+/* Chat bubble */
+.chat-card {
+    max-width: 70%;
+    padding: 10px 14px;
+    border-radius: var(--radius);
+    margin: 6px 0;
+    font-family: var(--font);
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* RIGHT (USER) */
+.chat-user {
+    align-self: flex-end;
+    background: var(--theme);
+    color: #fff;
+}
+
+/* LEFT (VENDOR) */
+.chat-vendor {
+    align-self: flex-start;
+    background: var(--bg-soft);
+    color: var(--text);
+}
+
+/* Message */
+.chat-message {
+    word-break: break-word;
+    margin-bottom: 6px;
+}
+
+/* Meta row */
+.chat-meta {
+    display: flex;
+    gap: 6px;
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+/* FIX: remove margin-left:auto conflict */
+.chat-date {
+    white-space: nowrap;
+}
+
+/* Align meta based on sender */
+.chat-user .chat-meta {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.chat-vendor .chat-meta {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.chat-meta .chat-from {
+    font-weight: 600;
+}
+
+.chat-meta .chat-type {
+    text-transform: uppercase;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .chat-card {
+        max-width: 85%;
+    }
+}

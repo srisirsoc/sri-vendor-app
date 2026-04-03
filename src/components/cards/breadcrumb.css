@@ -1,0 +1,48 @@
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 14px;
+    padding: 14px 0;
+}
+
+.crumb-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.crumb {
+    color: #64748b;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.crumb:hover {
+    color: #37c2cc;
+}
+
+.crumb.home {
+    font-weight: 500;
+}
+
+.separator {
+    margin: 0 10px;
+    color: #cbd5e1;
+}
+
+.crumb.active {
+    color: #37c2cc;
+    font-weight: 600;
+    cursor: default;
+}
+
+@media (max-width: 500px) {
+    .breadcrumb {
+        font-size: 13px;
+    }
+
+    .separator {
+        margin: 0 6px;
+    }
+}

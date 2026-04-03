@@ -1,0 +1,96 @@
+.incoming-call-modal {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1465c2;
+    padding: 30px 40px;
+    width: 320px;
+    text-align: center;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Ring Animation */
+.ring-animation {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    border: 3px solid #4CAF50;
+    animation: pulse 1.4s infinite ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 42px;
+    font-weight: bold;
+    background: #000;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        opacity: 1;
+    }
+
+    70% {
+        transform: scale(1.2);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(0.95);
+        opacity: 1;
+    }
+}
+
+/* Buttons */
+.actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.actions button {
+    width: 48%;
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: 0.25s ease;
+}
+
+button.accept {
+    background: #4CAF50;
+    color: white;
+}
+
+button.accept:hover {
+    background: #43a047;
+}
+
+button.reject {
+    background: #e53935;
+    color: white;
+}
+
+button.reject:hover {
+    background: #d32f2f;
+}
+
+/* Fade appear */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -48%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}

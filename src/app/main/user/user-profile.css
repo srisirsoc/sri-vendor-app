@@ -1,0 +1,725 @@
+/* ===============================
+   Card
+================================ */
+.sd-card-modern {
+    border-radius: var(--radius);
+    padding: 25px;
+    margin: 25px auto;
+    background: #fff;
+    transition: transform var(--transition);
+}
+
+.sd-card-modern:hover {
+    transform: translateY(-3px);
+}
+
+/* ===============================
+   Header
+================================ */
+.sd-header-modern {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.sd-avatar-modern {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--primary);
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
+    flex-shrink: 0;
+}
+
+.sd-avatar-modern img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sd-info-modern {
+    flex: 1;
+}
+
+.sd-name-modern {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    cursor: pointer;
+}
+
+/* ===============================
+   Badges
+================================ */
+.sd-badges-modern {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+    justify-content: flex-start;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--bg);
+    color: var(--primary);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+}
+
+/* ===============================
+   CTA Buttons
+================================ */
+.sd-cta-modern {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.btn-gradient {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+}
+
+.btn-gradient:hover {
+    transform: translateY(-2px);
+    opacity: .95;
+}
+
+/* ===============================
+   Description
+================================ */
+.sd-description-modern {
+    margin-top: 20px;
+}
+
+.sd-about-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+/* ===============================
+   Info Blocks
+================================ */
+.sd-info-block {
+    margin-bottom: 24px;
+}
+
+.sd-info-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-dark);
+}
+
+/* ===============================
+   Chips
+================================ */
+.sd-chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.sd-chip {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    color: var(--text-dark);
+}
+
+/* ===============================
+   Skill / Speciality Cards
+================================ */
+.sd-item-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+    margin-bottom: 12px;
+    background: #fff;
+    transition: var(--transition);
+}
+
+.sd-item-card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+}
+
+.sd-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.sd-item-title {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.sd-item-level {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--primary-dark);
+}
+
+.sd-item-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 6px 0;
+}
+
+.sd-item-exp {
+    font-size: 13px;
+    color: var(--text-dark);
+}
+
+/* ===============================
+   Tabs (FINAL – Pill Style)
+================================ */
+.sd-tabs-modern {
+    display: flex;
+    gap: 10px;
+    margin-top: 28px;
+    padding: 6px;
+    background: var(--bg);
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+
+.sd-tabs-modern button {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.sd-tabs-modern button:hover {
+    background: rgba(55, 194, 204, .08);
+}
+
+.sd-tabs-modern button.active {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff;
+    box-shadow: 0 6px 14px rgba(55, 194, 204, .35);
+}
+
+/* ===============================
+   Tab Content
+================================ */
+.sd-tab-content-modern {
+    margin-top: 20px;
+    padding: 20px;
+    min-height: 140px;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    background: #fff;
+}
+
+/* Make tabs wrap on small screens */
+@media (max-width: 360px) {
+    .sd-tabs-modern {
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center;
+    }
+
+    .sd-tabs-modern button {
+        flex: unset;
+        /* Remove flex:1 */
+        padding: 8px 12px;
+        /* Smaller padding for tiny screens */
+        font-size: 0.75rem;
+        min-width: 80px;
+        /* Ensure a minimum touch-friendly width */
+    }
+}
+
+
+/* ===============================
+   Gallery (FINAL)
+================================ */
+.sd-gallery-modern {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.sd-gallery-item-modern {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+
+
+.sd-gallery-item-modern img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.sd-gallery-item-modern:hover img {
+    transform: scale(1.08);
+}
+
+.sd-gallery-item-modern:hover::after {
+    opacity: 1;
+}
+
+/* ===============================
+   Reviews
+================================ */
+.sd-reviews-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.sd-review-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    background: #fff;
+    transition: var(--transition);
+}
+
+.sd-review-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .06);
+}
+
+.sd-review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.sd-review-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sd-review-name {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.sd-review-stars {
+    font-size: 14px;
+    color: #fbbf24;
+}
+
+.sd-review-date {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.sd-review-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ===============================
+   Lightbox
+================================ */
+.sd-lightbox {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    cursor: zoom-out;
+}
+
+.sd-lightbox-img {
+    width: auto;
+    height: auto;
+    border-radius: var(--radius);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .4);
+    animation: zoomIn .25s ease;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ===============================
+   Comments
+================================ */
+.sd-comments-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.sd-comment-card {
+    display: flex;
+    gap: 12px;
+    padding: 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.sd-comment-card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+}
+
+.sd-comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.sd-comment-body {
+    flex: 1;
+}
+
+.sd-comment-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.sd-comment-name {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 14px;
+}
+
+.sd-comment-date {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.sd-comment-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ===============================
+   Gift Orders
+================================ */
+.sd-gifts-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.sd-gift-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.sd-gift-card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+}
+
+.sd-gift-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    box-shadow: 0px 2px 2px var(--theme);
+    border-radius: 10px;
+}
+
+.sd-gift-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sd-gift-name {
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.sd-gift-amount {
+    font-weight: 500;
+    color: var(--primary);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.sd-gift-users {
+    display: flex;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.sd-gift-user img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sd-gift-status {
+    align-self: flex-start;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.sd-gift-status.pending {
+    background: #fff5cc;
+    color: rgb(124, 124, 2);
+}
+
+.sd-gift-status.delivered {
+    background: #d3ffe3;
+    color: green;
+}
+
+.sd-gift-status.cancelled {
+    background: #ffd2d2;
+    color: red;
+}
+
+.sd-gift-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: var(--transition);
+    flex-wrap: wrap;
+    /* allow wrapping */
+}
+
+.sd-gift-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    box-shadow: 0px 2px 2px var(--theme);
+    border-radius: 10px;
+}
+
+.sd-gift-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    /* prevent overflow */
+}
+
+.sd-gift-details {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    /* wrap on small screens */
+    align-items: center;
+}
+
+.sd-gift-status {
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 600px) {
+    .sd-gift-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .sd-gift-details {
+        gap: 6px;
+    }
+
+    .sd-gift-icon {
+        font-size: 1.8rem;
+    }
+}
+
+/* ===============================
+   Responsive
+================================ */
+@media (max-width:400px) {
+    .sd-card-modern {
+        border-radius: var(--radius);
+        padding: 2px;
+        margin: 25px auto;
+        background: #fff;
+        transition: transform var(--transition);
+    }
+}
+
+@media (max-width: 1024px) {
+    .sd-header-modern {
+        gap: 20px;
+    }
+
+    .sd-avatar-modern {
+        width: 110px;
+        height: 110px;
+    }
+
+    .sd-name-modern {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .sd-header-modern {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .sd-cta-modern {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-gradient {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .sd-badges-modern {
+        justify-content: center;
+    }
+
+    .sd-gallery-item-modern img {
+        height: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .sd-comment-card {
+        flex-direction: column;
+        padding: 12px;
+    }
+
+    .sd-comment-text {
+        font-size: 13px;
+    }
+
+    .sd-gift-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .sd-gift-users {
+        gap: 10px;
+    }
+
+    .sd-gallery-item-modern img {
+        height: auto;
+    }
+}
+
+@media (max-width: 400px) {
+    .sd-avatar-modern {
+        width: 90px;
+        height: 90px;
+    }
+
+    .sd-comments-wrapper .sd-reviews-wrapper .sd-gifts-wrapper {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    .sd-name-modern {
+        font-size: 1.25rem;
+    }
+
+    .sd-item-desc {
+        font-size: 13px;
+    }
+
+    .sd-item-exp {
+        font-size: 12px;
+    }
+
+    .sd-tabs-modern button {
+        font-size: 0.8rem;
+        padding: 8px 10px;
+    }
+
+    .sd-about-text {
+        font-size: 14px;
+    }
+}
