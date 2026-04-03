@@ -1,0 +1,43 @@
+/* FaqCard.css */
+.faq-card-container {
+    width: 100%;
+}
+
+.faq-card-header {
+    padding: 16px;
+    border-radius: 8px 8px 0 0;
+    background-color: #007bff;
+    /* You can adjust this to match your design */
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.faq-card-header:hover {
+    background-color: #0056b3;
+}
+
+.faq-card-answer {
+    padding: 16px;
+    background-color: rgba(90, 0, 206, 0.5);
+    /* Purple with transparency */
+    border-radius: 0 0 8px 8px;
+    color: white;
+    overflow: hidden;
+    max-height: 0;
+    /* Start with hidden content */
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.faq-card-answer.open {
+    max-height: 200px;
+    /* Adjust based on content */
+    opacity: 1;
+}
+
+.faq-card-answer p {
+    margin: 0;
+    font-size: 1rem;
+}

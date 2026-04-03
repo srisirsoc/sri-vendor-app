@@ -1,0 +1,6 @@
+{
+  "appId": "com.sri.client",
+  "appName": "Sri Client",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

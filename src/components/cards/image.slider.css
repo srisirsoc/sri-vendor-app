@@ -1,0 +1,68 @@
+/* General Container */
+.image-slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    /* Rounded corners for a more modern look */
+}
+
+/* Image Style */
+.image-slider-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Buttons (Prev / Next) */
+.image-slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s ease;
+}
+
+.image-slider-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.image-slider-btn-left {
+    left: 16px;
+}
+
+.image-slider-btn-right {
+    right: 16px;
+}
+
+/* Button Icon Size */
+.image-slider-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Slide Transition Effect */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.image-slider-transition {
+    animation: slideIn 1s ease-out;
+}

@@ -1,0 +1,176 @@
+/* ================= CHAT INPUT CONTAINER ================= */
+
+.chat-input-main {
+  padding: 20px 16px;
+  background: var(--bg, #f4fefe);
+  border-top: 1px solid var(--border, #e5e7eb);
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+}
+
+/* ================= INPUT WRAPPER ================= */
+
+.chat-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 20px;
+  border: 1px solid var(--border, #e5e7eb);
+  background: var(--bg, #f4fefe);
+}
+
+/* ================= LEFT ICONS ================= */
+
+.input-icon {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.input-icon button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.input-icon button:hover {
+  background: rgba(55, 194, 204, 0.1);
+}
+
+/* ================= RIGHT ICONS ================= */
+
+.input-right {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.input-right button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.input-right button:hover {
+  background: rgba(55, 194, 204, 0.1);
+}
+
+/* ================= SVG ICON SIZE ================= */
+
+.input-icon button svg,
+.input-right button svg,
+.send-btn svg {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  pointer-events: none;
+  color: var(--muted, #6b7280);
+}
+
+/* Send button */
+.send-btn {
+  background: var(--theme, #37c2cc);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform 0.15s ease;
+}
+
+.send-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Recording button */
+.recording {
+  background: #f87171;
+  color: #fff;
+}
+
+/* ================= INPUT TEXT FIELD ================= */
+
+.chat-input input[type="text"] {
+  flex: 1;
+  height: 40px;
+  padding: 0 10px;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text, #333);
+}
+
+/* Placeholder color */
+.chat-input input[type="text"]::placeholder {
+  color: #9ca3af;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 480px) {
+  .chat-input {
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .input-icon button,
+  .input-right button,
+  .send-btn {
+    width: 28px;
+    height: 28px;
+  }
+
+  .input-icon button svg,
+  .input-right button svg,
+  .send-btn svg {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+  }
+
+  .chat-input input[type="text"] {
+    font-size: 13px;
+    height: 36px;
+  }
+}
+
+/* ================= LARGE SCREENS ================= */
+
+@media (min-width: 1200px) {
+  .input-icon button,
+  .input-right button,
+  .send-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .input-icon button svg,
+  .input-right button svg,
+  .send-btn svg {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+  }
+
+  .chat-input input[type="text"] {
+    font-size: 15px;
+    height: 44px;
+  }
+}

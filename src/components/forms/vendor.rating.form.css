@@ -1,0 +1,95 @@
+/* Container for the entire form */
+.vendor-rating-form {
+    padding: 16px;
+}
+
+/* Title styling */
+.title {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.title h2 {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--blue);
+}
+
+/* Rating stars styling */
+.rating-section {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stars {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.star {
+    font-size: 32px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.star.active {
+    color: #fbbf24;
+    /* Yellow color for active stars */
+    box-shadow: 0 0 10px rgba(255, 191, 36, 0.7);
+    border-radius: 50%;
+}
+
+/* Feedback textarea styling */
+.feedback-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    outline: none;
+    margin-top: 16px;
+    border-radius: 8px;
+}
+
+/* Buttons section styling */
+.buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    background-color: #ccc;
+}
+
+.skip-btn {
+    background-color: #f3f4f6;
+    color: #333;
+}
+
+.submit-btn {
+    background-color: #2563eb;
+    /* Blue color for the submit button */
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: #1d4ed8;
+    /* Darker blue on hover */
+}
+
+.skip-btn:hover {
+    background-color: #e5e7eb;
+}

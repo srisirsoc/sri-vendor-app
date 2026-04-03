@@ -1,0 +1,83 @@
+/* Root */
+.scroll-slider {
+    width: 100%;
+}
+
+/* Header */
+.scroll-slider-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+/* Buttons container */
+.scroll-slider-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* Slider Buttons */
+.slider-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    color: #111827;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.slider-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.slider-btn:hover {
+    background: #ec4899;
+    /* pink */
+    color: #ffffff;
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+.slider-btn:active {
+    transform: scale(0.95);
+}
+
+/* Slider Track */
+.scroll-slider-track {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+
+    /* Scroll snap */
+    scroll-snap-type: x mandatory;
+}
+
+/* Each child card */
+.scroll-slider-track>* {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+}
+
+/* Hide scrollbar */
+.scroll-slider-track::-webkit-scrollbar {
+    height: 6px;
+}
+
+.scroll-slider-track::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+.scroll-slider-track::-webkit-scrollbar-track {
+    background: transparent;
+}

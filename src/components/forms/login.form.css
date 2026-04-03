@@ -1,0 +1,126 @@
+/* ===== Login Card ===== */
+.login-card {
+    width: 100%;
+    padding: 28px;
+    text-align: center;
+}
+
+/* ===== Title & Subtitle ===== */
+.login-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.login-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+/* ===== Input Group ===== */
+.input-group {
+    position: relative;
+    margin-bottom: 18px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 14px;
+    font-size: 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+    transition: var(--transition);
+    background: #fff;
+}
+
+.input-group input:focus {
+    border-color: var(--primary);
+}
+
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+    background: #fff;
+    padding: 0 6px;
+    transition: var(--transition);
+}
+
+/* Floating label */
+.input-group input:focus+label,
+.input-group input:not(:placeholder-shown)+label {
+    top: -6px;
+    font-size: 0.75rem;
+    color: var(--primary);
+}
+
+/* ===== Error Text ===== */
+.error-text {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--error);
+    margin-bottom: 12px;
+}
+
+/* ===== Button ===== */
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.login-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(55, 194, 204, 0.35);
+}
+
+.login-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ===== Mobile Friendly ===== */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 26px 22px;
+    }
+}

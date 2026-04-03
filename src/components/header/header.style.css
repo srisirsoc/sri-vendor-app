@@ -1,0 +1,180 @@
+.header-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 5px 0;
+}
+
+/* ================= CONTAINER ================= */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ================= LOGO ================= */
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--theme);
+    cursor: pointer;
+}
+
+/* ================= NAV LINKS ================= */
+.nav-links {
+    display: flex;
+    gap: 16px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: 0.2s ease;
+}
+
+.nav-link:hover {
+    background: rgba(55, 194, 204, 0.12);
+    color: var(--theme);
+}
+
+/* ================= HEADER RIGHT ================= */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* ================= MOBILE MENU BUTTON ================= */
+.mobile-menu-btn {
+    font-size: 26px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text);
+    transition: 0.2s ease;
+}
+
+.mobile-menu-btn:hover {
+    color: var(--theme);
+}
+
+/* ================= USER AVATAR ================= */
+.user-avatar-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 999px;
+    transition: 0.2s ease;
+}
+
+.user-avatar-wrapper:hover {
+    background: rgba(55, 194, 204, 0.12);
+}
+
+/* ================= AVATAR CIRCLE ================= */
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(55, 194, 204, 0.15);
+    border: 2px solid var(--theme);
+    color: var(--theme);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.user-avatar img {
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+
+/* ================= USER NAME ================= */
+.user-name {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--text);
+}
+
+/* ================= CART BADGE ================= */
+.cart-badge {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    background: #ef4444;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #fff;
+}
+
+/* Search button in header */
+.search-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+.header-search-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px;
+}
+
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.header-search-filter input,
+.header-search-filter select {
+    padding: 10px 8px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+}
+
+.apply-filter-btn {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+}

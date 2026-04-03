@@ -1,0 +1,174 @@
+.call-screen.connected {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    font-family: var(--font-family);
+}
+
+.call-card {
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 24px 16px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.call-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-info img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary);
+}
+
+.user-info h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.call-status {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--success);
+}
+
+/* -------------------- */
+/* Talking Area         */
+/* -------------------- */
+.talking-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    padding: 16px 0;
+}
+
+.speaker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.speaker img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary);
+}
+
+.call-middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.timer {
+    font-size: 13px;
+    color: var(--bg);
+    background: var(--text-dark);
+    padding: 4px 12px;
+    border-radius: 18px;
+    font-weight: bold;
+}
+
+.call-wave {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 36px;
+}
+
+.call-wave span {
+    width: 4px;
+    background: var(--primary);
+    border-radius: 4px;
+    animation: waveMove 1.2s infinite ease-in-out;
+}
+
+.call-wave span:nth-child(1) { animation-delay: 0s; }
+.call-wave span:nth-child(2) { animation-delay: 0.15s; }
+.call-wave span:nth-child(3) { animation-delay: 0.3s; }
+.call-wave span:nth-child(4) { animation-delay: 0.45s; }
+.call-wave span:nth-child(5) { animation-delay: 0.6s; }
+
+@keyframes waveMove {
+    0%, 100% { height: 12px; }
+    50% { height: 36px; }
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 16px;
+}
+
+.circle-btn {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: none;
+    background: #099443;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: var(--transition);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-btn:hover {
+    transform: scale(1.05);
+    background: #1eaf5a;
+}
+
+.circle-btn.muted {
+    background: var(--text-muted);
+    color: var(--danger);
+}
+
+.circle-btn.end {
+    background: var(--danger);
+    color: #fff;
+}
+
+
+@media (max-width: 480px) {
+    .speaker img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .call-wave span {
+        width: 3px;
+    }
+
+    .talking-area {
+        gap: 12px;
+        padding: 8px 0;
+    }
+}

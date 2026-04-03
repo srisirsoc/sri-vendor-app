@@ -1,0 +1,179 @@
+/* ================= CHAT APP LAYOUT ================= */
+
+.chat-app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #f4fefe;
+}
+
+
+/* ================= CHAT SECTION ================= */
+
+.chat-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  background: #111827;
+
+  margin-left: 0;
+  transition: margin 0.25s ease;
+  overflow: hidden;
+}
+
+.chat-section.sidebar-open {
+  margin-left: 300px;
+}
+
+
+/* ================= MESSAGE AREA ================= */
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  scroll-behavior: smooth;
+}
+
+
+/* ================= IMAGE PREVIEW ================= */
+
+.image-preview {
+  position: relative;
+  display: inline-block;
+
+  max-width: 220px;
+  max-height: 200px;
+
+  margin: 8px 16px;
+
+  border-radius: 12px;
+  overflow: hidden;
+
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ================= AUDIO PREVIEW ================= */
+
+.audio-preview {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 300px;
+
+  margin: 8px 16px;
+  padding: 8px;
+
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+
+  border-radius: 12px;
+}
+
+.audio-preview audio {
+  width: 100%;
+}
+
+
+/* ================= UPLOAD PROGRESS ================= */
+
+.upload-progress {
+  position: relative;
+
+  width: 100%;
+  height: 22px;
+
+  margin-top: 6px;
+
+  background: rgba(0,0,0,0.1);
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding: 0 6px;
+
+  font-size: 11px;
+  color: #111;
+}
+
+.upload-progress .bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  height: 100%;
+  width: 0;
+
+  background: #37c2cc;
+  border-radius: 8px;
+
+  transition: width 0.25s ease;
+}
+
+.upload-progress span {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ================= SCROLLBAR ================= */
+
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  .chat-section.sidebar-open {
+    margin-left: 0;
+  }
+
+  .image-preview {
+    max-width: 160px;
+    max-height: 160px;
+  }
+
+  .audio-preview {
+    max-width: 220px;
+  }
+
+}
+
+
+/* ================= EXTRA SMALL ================= */
+
+@media (max-width: 480px) {
+
+  .chat-messages {
+    padding: 10px;
+  }
+
+  .image-preview {
+    max-width: 140px;
+    max-height: 140px;
+  }
+
+}

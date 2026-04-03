@@ -1,0 +1,70 @@
+.top-header-modern {
+    background: var(--theme);
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.top-header-modern-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+/* Sections */
+.top-header-modern-left,
+.top-header-modern-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Items */
+.top-header-modern-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.top-header-modern-item .icon,
+.top-header-modern-social .icon {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+/* Social icons */
+.top-header-modern-social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* -------------------------------
+   RESPONSIVE (SM DEVICES)
+-------------------------------- */
+@media (max-width: 640px) {
+    .top-header-modern-inner {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    /* Hide text on small screens */
+    .top-header-modern-item .text {
+        display: none;
+    }
+
+    /* Reduce gaps */
+    .top-header-modern-left,
+    .top-header-modern-right {
+        gap: 12px;
+    }
+
+    /* Slightly bigger icons for touch */
+    .top-header-modern-item .icon,
+    .top-header-modern-social .icon {
+        font-size: 18px;
+    }
+}

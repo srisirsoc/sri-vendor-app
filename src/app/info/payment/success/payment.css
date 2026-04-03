@@ -1,0 +1,71 @@
+.payment-container {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family);
+}
+
+.payment-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.payment-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+}
+
+.success {
+    color: #28a745;
+}
+
+.failed {
+    color: #dc3545;
+}
+
+.payment-title {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.payment-message {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.payment-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-failed {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-failed:hover {
+    background-color: #c82333;
+}

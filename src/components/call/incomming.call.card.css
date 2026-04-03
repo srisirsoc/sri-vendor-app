@@ -1,0 +1,176 @@
+.call-main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* -------------------- */
+/* Card                 */
+/* -------------------- */
+.call-card {
+    width: 100%;
+    padding: 24px 16px;
+    text-align: center;
+}
+
+/* -------------------- */
+/* Avatar + Waves       */
+/* -------------------- */
+.audio-avatar-wrap {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 20px;
+}
+
+.audio-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 4px solid var(--primary);
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    background: #fff;
+}
+
+/* Waves */
+.wave {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--primary);
+    opacity: 0.25;
+    animation: pulse 2.4s infinite ease-out;
+}
+
+.wave-2 {
+    animation-delay: 0.8s;
+}
+
+.wave-3 {
+    animation-delay: 1.6s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.35;
+    }
+    100% {
+        transform: scale(1.9);
+        opacity: 0;
+    }
+}
+
+/* Badge */
+.audio-badge {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    z-index: 3;
+}
+
+/* -------------------- */
+/* Text                 */
+/* -------------------- */
+.name {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.meta {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 6px 0 14px;
+}
+
+.status.incoming {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* -------------------- */
+/* Buttons              */
+/* -------------------- */
+.call-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.incomming-call-btn {
+    padding: 12px 20px;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+/* Accept */
+.incomming-call-btn.accept {
+    background: var(--success);
+    color: #fff;
+}
+
+.incomming-call-btn.accept:hover {
+    background: #15803d;
+    transform: translateY(-1px);
+}
+
+/* Decline */
+.incomming-call-btn.decline {
+    background: var(--danger);
+    color: #fff;
+}
+
+.incomming-call-btn.decline:hover {
+    background: #b91c1c;
+    transform: translateY(-1px);
+}
+
+/* -------------------- */
+/* Error                */
+/* -------------------- */
+.error-message {
+    color: var(--danger);
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+/* -------------------- */
+/* Responsive           */
+/* -------------------- */
+@media (max-width: 480px) {
+    .audio-avatar {
+        width: 90px;
+        height: 90px;
+    }
+
+    .audio-avatar-wrap {
+        width: 90px;
+        height: 90px;
+    }
+
+    .wave {
+        width: 90px;
+        height: 90px;
+    }
+}

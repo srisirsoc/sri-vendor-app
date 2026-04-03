@@ -1,0 +1,191 @@
+/* Card container */
+.order-compact-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    width: 100%;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.order-compact-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+/* Row layout */
+.order-compact-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Vendor + avatar */
+.order-compact-vendor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.order-compact-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.order-compact-info h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.order-compact-id {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* Status badge */
+.order-compact-status {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.order-compact-status.complete {
+    background: rgba(7, 116, 56, 0.12);
+    color: var(--success);
+}
+
+.order-compact-status.pending {
+    background: rgba(245, 158, 11, 0.12);
+    color: var(--theme);
+}
+
+.order-compact-status.failed {
+    background: rgba(239, 68, 68, 0.12);
+    color: var(--danger);
+}
+
+/* Bottom row: amount + date */
+.order-compact-bottom {
+    margin-top: 10px;
+}
+
+.order-compact-amount {
+    font-weight: 700;
+    color: var(--text);
+    font-size: 15px;
+}
+
+.order-compact-date {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: right;
+}
+
+/* Grid spacing (optional) */
+.order-compact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 12px;
+}
+
+@media (min-width: 640px) {
+    .order-compact-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .order-compact-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1280px) {
+    .order-compact-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Button style */
+.order-compact-call-btn {
+    background: var(--theme);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.order-compact-call-btn:hover {
+    background: #2aaab3;
+}
+
+/* Align bottom row items properly */
+.order-compact-bottom {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Amount + date container */
+.order-compact-bottom div {
+    display: flex;
+    gap: 4px;
+    font-size: 13px;
+    color: var(--text);
+    align-items: center;
+}
+
+/* Optional: reduce clutter on mobile */
+@media (max-width: 480px) {
+    .order-compact-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .order-compact-call-btn {
+        align-self: flex-end;
+    }
+}
+
+
+.order-min-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 12px;
+}
+
+@media (min-width: 640px) {
+    .order-min-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .order-min-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1280px) {
+    .order-min-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
