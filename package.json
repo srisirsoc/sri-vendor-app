@@ -1,6 +1,6 @@
 {
-  "name": "sri-client",
-  "version": "0.1.0",
+  "name": "sri-vendor",
+  "version": "1.0.0",
   "type": "module",
   "private": true,
   "scripts": {

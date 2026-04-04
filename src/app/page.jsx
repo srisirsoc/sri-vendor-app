@@ -59,7 +59,7 @@ const MediaDebug = () => {
   );
 };
 
-export default function Page() {
+export default function HomePage() {
   const [lib, setLib] = useState({ query: '&page=1&limit=12', loading: true });
 
   useEffect(() => {

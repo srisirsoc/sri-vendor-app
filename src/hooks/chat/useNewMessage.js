@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSocket } from "@/components/state/socket.provider";
+import { useSocket } from "@/hooks/useSocket";
 export function useNewMessage() {
     const socket = useSocket();
     const [popup, setPopup] = useState(null);

@@ -1,7 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import StoreProvider from '@/components/state/store-provider';
-import { SocketProvider } from '@/components/state/socket.provider';
+import { Routes, Route } from 'react-router-dom';
 import Layout from '@/components/layout/layout';
 import HomePage from './app/page.jsx';
 import LoginPage from './app/info/login/page.jsx';
@@ -31,41 +29,33 @@ import NotFoundPage from './app/not-found';
 
 const App = () => {
   return (
-    <StoreProvider>
-      <BrowserRouter>
-        <SocketProvider>
-          <Layout lib={{}}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/blog" element={<BlogPage />} />
-              <Route path="/blog/:slug" element={<BlogDetailsPage />} />
-              <Route path="/about-us" element={<AboutUsPage />} />
-              <Route path="/privacy-policy" element={<PrivacyPage />} />
-              <Route path="/terms-of-use" element={<TermsPage />} />
-              <Route path="/support" element={<SupportPage />} />
-              <Route path="/payment/razorpay" element={<RazorpayPage />} />
-              <Route path="/payment/success" element={<PaymentSuccessPage />} />
-              <Route path="/payment/failed" element={<PaymentFailedPage />} />
-              <Route path="/calls" element={<CallsPage />} />
-              <Route path="/calls/:slug" element={<CallDetailsPage />} />
-              <Route path="/chats" element={<ChatsPage />} />
-              <Route path="/chats/:slug" element={<ChatDetailsPage />} />
-              <Route path="/details" element={<DetailsIndexPage />} />
-              <Route path="/details/:slug" element={<ServiceDetailsPage />} />
-              <Route path="/search" element={<SearchPage />} />
-              <Route path="/user/history" element={<UserHistoryPage />} />
-              <Route path="/user" element={<UserPage />} />
-              <Route path="/v-calls" element={<VCallsPage />} />
-              <Route path="/v-calls/:slug" element={<VCallDetailsPage />} />
-              <Route path="/wallet" element={<WalletPage />} />
-              <Route path="/wallet/:slug" element={<WalletDetailsPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </Layout>
-        </SocketProvider>
-      </BrowserRouter>
-    </StoreProvider>
+    <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogDetailsPage />} />
+        <Route path="/about-us" element={<AboutUsPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPage />} />
+        <Route path="/terms-of-use" element={<TermsPage />} />
+        <Route path="/support" element={<SupportPage />} />
+        <Route path="/payment/razorpay" element={<RazorpayPage />} />
+        <Route path="/payment/success" element={<PaymentSuccessPage />} />
+        <Route path="/payment/failed" element={<PaymentFailedPage />} />
+        <Route path="/calls" element={<CallsPage />} />
+        <Route path="/calls/:slug" element={<CallDetailsPage />} />
+        <Route path="/chats" element={<ChatsPage />} />
+        <Route path="/chats/:slug" element={<ChatDetailsPage />} />
+        <Route path="/details" element={<DetailsIndexPage />} />
+        <Route path="/details/:slug" element={<ServiceDetailsPage />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/user/history" element={<UserHistoryPage />} />
+        <Route path="/user" element={<UserPage />} />
+        <Route path="/v-calls" element={<VCallsPage />} />
+        <Route path="/v-calls/:slug" element={<VCallDetailsPage />} />
+        <Route path="/wallet" element={<WalletPage />} />
+        <Route path="/wallet/:slug" element={<WalletDetailsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
   );
 };
 
