@@ -65,6 +65,11 @@ const OtpVerifyModal = () => {
         try {
             const { success, message } = await AVendor.Session(data);
             if (success) {
+                if (typeof window !== 'undefined') {
+                    if (data?.token) localStorage.setItem('token', data.token);
+                    if (data?.user_id) localStorage.setItem('vendor_id', data.user_id);
+                    if (data?.language) localStorage.setItem('language', data.language);
+                }
                 toast.success(message);
                 dispatch({ type: Actions.loading, payload: false });
                 dispatch({ type: Actions.model, payload: [false, null] });

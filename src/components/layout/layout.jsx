@@ -1,11 +1,9 @@
 "use client";
 import React, { useState, useEffect, useContext } from "react";
-import { Toaster } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../header/header";
 import TopHeader from "../header/top-header";
 import BottomNavbar from "../header/bottom.navbar";
-import Footer from "../cards/footer.card";
 import NewMessagePopup from "../cards/notification.card";
 import ModelType from "../models/model-type";
 import { useNewMessage } from "@/hooks/chat/useNewMessage";
@@ -15,16 +13,16 @@ import Actions from "../state/actions";
 import { AVendor } from "@/actions/a.vendor";
 const LAYOUT_HIDE_PATHS = ["calls/", "chats/", "v-calls/"];
 
-const Layout = ({ children, lib }) => {
+const Layout = ({ children }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const pathname = location.pathname;
-    const [session, setSession] = useState({ ...lib?.user });
+    const [session, _] = useState({});
     const { popup, setPopup } = useNewMessage();
     const [toggle, setToggle] = useState(true);
-    const language = lib?.language || "ENGLISH";
 
     const { state: { user }, dispatch } = useContext(Context);
+    const language = "ENGLISH";
 
     const Session = async () => {
 
@@ -67,27 +65,21 @@ const Layout = ({ children, lib }) => {
     useEffect(() => {
         !user?.vendor_id ? dispatch({ type: Actions.model, payload: [true, "login", null, true] }) : dispatch({ type: Actions.model, payload: [false, null] });
     }, [user?.vendor_id]);
-
-    if (!user?.vendor_id || !user?.token) return <ModelType />;
+    const showLoginModal = !user?.vendor_id || !user?.token;
+    if (showLoginModal) return <ModelType />;
 
     return (
         <>
             {toggle && (
                 <>
                     <TopHeader user={user} />
-                    <header className="header">
-                        <Header language={language} mainMenu={{}} />
-                    </header>
+                    <header className="header"><Header language={language} mainMenu={{}} /></header>
                     <BottomNavbar />
                 </>
             )}
 
             <main className="min-h-[80vh]">{children}</main>
 
-            {toggle && <Footer />}
-            <Toaster />
-            <ModelType />
-            
             {popup && (
                 <NewMessagePopup
                     open={!!popup}
