@@ -5,11 +5,11 @@ import LoginForm from "../forms/login.form";
 import VerifyOtpForm from "../forms/otp.verify.form";
 import ShareWithPeople from "../cards/share-with-people.card";
 import IncomingCallCard from "../call/incomming.call.card";
-import { Context } from "../state/store-provider";
 import IncomingVideoCall from "../vcall/vcall.incomming";
 import GlobalTable from "../cards/global-table";
 import ChatHistoryCard from "../cards/chat.history.card";
 import SmOrderCard from "../cards/sm-order-card";
+import { Context } from "../../store/store-provider";
 const ModelType = () => {
     const { state: { model, user } } = useContext(Context);
     if (!model[0]) return null;

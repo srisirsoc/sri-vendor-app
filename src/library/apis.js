@@ -75,11 +75,6 @@ const APIClient = (module) => {
             if (data?.token) setCookie('token', data.token, 30);
             if (data?.user_id) setCookie('user_id', data.user_id, 30);
             if (data?.language) setCookie('language', data.language, 30);
-            if (typeof window !== 'undefined') {
-                if (data?.token) localStorage.setItem('token', data.token);
-                if (data?.user_id) localStorage.setItem('vendor_id', data.user_id);
-                if (data?.language) localStorage.setItem('language', data.language);
-            }
             return { success: true, message: 'Session saved successfully' };
         },
         IsAuth: (token) => Fetch(api.is_auth, "get", null, token),

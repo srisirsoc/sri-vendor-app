@@ -11,7 +11,7 @@ const FloatingWhatsapp = () => {
 
     return (
         <a
-            href={`https://wa.me/${phoneNumber}?text=${message}`}
+            to={`https://wa.me/${phoneNumber}?text=${message}`}
             className="floating-whatsapp pulse"
             target="_blank"
             rel="noopener noreferrer"

@@ -1,15 +1,17 @@
 import { FaPhone, FaPhoneAlt, FaVideo } from "react-icons/fa";
-import { useEffect, useRef, useState } from "react";
-import { useVideoCall } from "@/hooks/vcall/useVideoCall";
-import { useSignaling } from "@/hooks/vcall/useSignaling";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { socket } from "@/library/socket.client";
 import "./vcall.incomming.css";
+import { useVideoCall } from "../../hooks/vcall/useVideoCall";
+import { useSignaling } from "../../hooks/vcall/useSignaling";
+import { useSocket } from "../../store/socket.provider";
 
 export default function IncomingVideoCall({ order, token }) {
-    const navigate = useNavigate();
+    const socket = useSocket();
+    const navigate = useNavigate(); // React Router hook
     const user = order?.vendor;
     const service = order?.service || {};
+
     const payload = {
         room_id: service?.token,
         order_id: order?._id,
@@ -18,20 +20,25 @@ export default function IncomingVideoCall({ order, token }) {
         vendor_id: order?.vendor?.id,
         call_type: "video",
     };
+
     const is_caller = false;
+
     const call = useVideoCall(payload, socket, token);
-    useSignaling({ payload, call, socket, onEnd: () => location.replace("/") });
+    useSignaling({ payload, call, socket, onEnd: () => navigate("/") }); // use navigate instead of location.replace
+
     useEffect(() => {
         call.PlayRingtone();
     }, [order?._id]);
+
     const handleAccept = async () => {
         await call.AcceptCall();
         call.StopRingtone();
     };
+
     const handleDecline = async () => {
         await call.RejectCall();
         call.StopRingtone();
-        navigate("/");
+        navigate("/"); // replace router.replace("/") with navigate
     };
 
     return (
@@ -43,7 +50,7 @@ export default function IncomingVideoCall({ order, token }) {
                     <span className="pulse pulse-2"></span>
                     <img
                         src={user?.avatar || "/user.png"}
-                        alt={user.name}
+                        alt={user?.name}
                         className="avatar"
                     />
                 </div>
@@ -69,7 +76,6 @@ export default function IncomingVideoCall({ order, token }) {
                         <FaPhoneAlt /> Reject
                     </button>
                 </div>
-
             </div>
         </div>
     );

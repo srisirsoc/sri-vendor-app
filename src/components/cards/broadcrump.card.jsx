@@ -1,26 +1,19 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import "./breadcrumb.css";
 import Container from "./container.card";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Breadcrumb() {
-    const path = usePathname();
-
-    const segments = path
-        .split("/")
-        .filter(Boolean);
-
-    const formatLabel = (segment) =>
-        decodeURIComponent(segment)
-            .replace(/-/g, " ")
-            .replace(/\b\w/g, (l) => l.toUpperCase());
+    const location = useLocation();
+    const path = location.pathname;
+    const segments = path.split("/").filter(Boolean);
+    const formatLabel = (segment) => decodeURIComponent(segment).replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
 
     return (
         <Container>
             <nav className="breadcrumb" aria-label="Breadcrumb">
-                <Link href="/" className="crumb home">
+                <Link to="/" className="crumb home">
                     Home
                 </Link>
 
@@ -33,11 +26,9 @@ export default function Breadcrumb() {
                             <span className="separator">›</span>
 
                             {isLast ? (
-                                <span className="crumb active">
-                                    {formatLabel(segment)}
-                                </span>
+                                <span className="crumb active">{formatLabel(segment)}</span>
                             ) : (
-                                <Link href={href} className="crumb">
+                                <Link to={href} className="crumb">
                                     {formatLabel(segment)}
                                 </Link>
                             )}

@@ -95,7 +95,7 @@ const SendGiftCard = () => {
                     onClick={SendGiftHandler}
                 />
                 <div className={style.btn} onClick={() => dispatch({ type: States.model, payload: [false, null, null] })}>
-                    <Link href={"/recharge"}>Recharge</Link>
+                    <Link to={"/recharge"}>Recharge</Link>
                 </div>
             </div>
         </div>

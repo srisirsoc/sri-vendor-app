@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
 
 import { BiHomeAlt } from "react-icons/bi";
@@ -11,9 +9,10 @@ import { MdCall } from "react-icons/md";
 import { RiMessage2Line } from "react-icons/ri";
 
 import "./bottom.navbar.css";
+import { Link, useParams } from "react-router-dom";
 
 export default function BottomNavbar() {
-    const pathname = usePathname();
+    const pathname = useParams();
     const [showNavbar, setShowNavbar] = useState(true);
     const lastScrollY = useRef(0);
     const ticking = useRef(false);
@@ -40,7 +39,7 @@ export default function BottomNavbar() {
     return (
         <nav className={`bottom-navbar ${showNavbar ? "show" : "hide"}`}>
             <Link
-                href="/"
+                to="/"
                 className={`nav-item ${pathname === "/" ? "active" : ""}`}
             >
                 <BiHomeAlt />
@@ -48,19 +47,19 @@ export default function BottomNavbar() {
             </Link>
 
             <Link
-                href="/chats"
+                to="/chats"
                 className={`nav-item ${pathname === "/chats" ? "active" : ""}`}
             >
                 <RiMessage2Line />
                 <span>Chats</span>
             </Link>
 
-            <Link href="/v-calls" className="nav-item center-item">
+            <Link to="/vcalls" className="nav-item center-item">
                 <BsCameraVideo />
             </Link>
 
             <Link
-                href="/calls"
+                to="/calls"
                 className={`nav-item ${pathname === "/calls" ? "active" : ""}`}
             >
                 <MdCall />
@@ -68,7 +67,7 @@ export default function BottomNavbar() {
             </Link>
 
             <Link
-                href="/user"
+                to="/user"
                 className={`nav-item ${pathname === "/user" ? "active" : ""}`}
             >
                 <FiUser />

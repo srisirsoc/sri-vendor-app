@@ -1,9 +1,9 @@
 'use client';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import React, { useContext } from 'react';
 import "./style.css";
-// import Script from 'next/script'; // Remove Next.js Script
+import Script from 'next/script';
 import { Actions } from '../../../library/actions';
 import { Utility } from '@/library/utility';
 import { Context } from '../state/store-provider';
@@ -13,7 +13,7 @@ import { Style } from '@/library/styles';
 
 const RazorPayForm = ({ createapi, verifyapi, amount, order_id, token, user, failed_url, success_url, SubmitHandler }) => {
 
-    const navigate = useNavigate();
+    const router = useRouter();
     const { state: { loading }, dispatch } = useContext(Context);
 
     const SubmitHandler1 = async (e) => {
@@ -51,16 +51,16 @@ const RazorPayForm = ({ createapi, verifyapi, amount, order_id, token, user, fai
                                 const { success, message, error } = await Fetch.PostData(verifyapi, formdata, token);
                                 if (success) {
                                     toast.success(message);
-                                    navigate(`${success_url}/?order=${order_id}`);
+                                    router.push(`${success_url}/?order=${order_id}`);
                                 } else {
                                     toast.error(error);
-                                    navigate(`${failed_url}/?order=${order_id}`);
+                                    router.push(`${failed_url}/?order=${order_id}`);
                                 }
                             }
                         } catch (error) {
                             console.log(error);
                             toast.error(error.message);
-                            navigate(`${failed_url}/?order=${order_id}`);
+                            router.push(`${failed_url}/?order=${order_id}`);
                         }
                     },
 
@@ -83,16 +83,16 @@ const RazorPayForm = ({ createapi, verifyapi, amount, order_id, token, user, fai
                     console.log(error);
                     const { code, description, source, step, reason } = await error;
                     toast.error(`${code} | ${description} | ${source} | ${step} | ${reason}`);
-                    navigate(`${failed_url}/?order=${order_id}`);
+                    router.push(`${failed_url}/?order=${order_id}`);
                 });
             } else {
                 toast.error(error || "Something wrong, payment failed!");
-                navigate(`${failed_url}/?order=${order_id}`);
+                router.push(`${failed_url}/?order=${order_id}`);
             }
         } catch (error) {
             dispatch({ type: Actions.loading, payload: false });
             toast.error(error.message || "Something went wrong!");
-            navigate(`${failed_url}/?order=${order_id}`);
+            router.push(`${failed_url}/?order=${order_id}`);
         }
     };
 

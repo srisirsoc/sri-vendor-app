@@ -1,6 +1,6 @@
 'use client';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import React, { useContext, useState } from 'react';
 import { Context } from '../state/store-provider';
 import { IconsReact } from '@/library/icons';
@@ -11,7 +11,7 @@ const Action = ARating;
 const States = AStore;
 
 const VendorRatingForm = ({ lib }) => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const { state: { loading, user, model }, dispatch } = useContext(Context);
     const [form, setForm] = useState({ ...model[2] });
 
@@ -25,7 +25,7 @@ const VendorRatingForm = ({ lib }) => {
                 toast.success(message);
                 dispatch({ type: States.loading, payload: false });
                 dispatch({ type: States.model, payload: [false, null] });
-                window.location.reload();
+                router.refresh();
             } else {
                 dispatch({ type: States.loading, payload: false });
                 toast.error(message || "Something went wrong!");
@@ -70,7 +70,7 @@ const VendorRatingForm = ({ lib }) => {
                             disabled={loading}
                             className="skip-btn"
                             type="button"
-                            onClick={() => navigate("/")}
+                            onClick={() => router.push("/")}
                         >
                             {loading ? "Please wait.." : "Skip"}
                         </button>

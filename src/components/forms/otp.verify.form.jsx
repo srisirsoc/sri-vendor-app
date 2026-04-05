@@ -1,19 +1,17 @@
 'use client';
+import './otp.verify.form.css';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
-
-import Actions from "../state/actions";
-import { AVendor } from '@/actions/a.vendor';
-import { Context } from '../state/store-provider';
-
-import './otp.verify.form.css';
-import { useRouter } from 'next/navigation';
+import { Context } from '../../store/store-provider';
+import { useNavigate } from 'react-router-dom';
+import Actions from '../../store/actions';
+import { AVendor } from '../../actions/a.vendor';
 
 const OTP_LENGTH = 4;
 const RESEND_TIME = 30;
 
 const OtpVerifyModal = () => {
-    const router = useRouter();
+    const router = useNavigate();
     const { state: { model, data, loading }, dispatch } = useContext(Context);
 
     const [otp, setOtp] = useState(Array(OTP_LENGTH).fill(""));
@@ -61,49 +59,36 @@ const OtpVerifyModal = () => {
         setTimeout(() => setShake(false), 450);
     };
 
-    const SetSession = async (data) => {
-        try {
-            const { success, message } = await AVendor.Session(data);
-            if (success) {
-                if (typeof window !== 'undefined') {
-                    if (data?.token) localStorage.setItem('token', data.token);
-                    if (data?.user_id) localStorage.setItem('vendor_id', data.user_id);
-                    if (data?.language) localStorage.setItem('language', data.language);
-                }
-                toast.success(message);
-                dispatch({ type: Actions.loading, payload: false });
-                dispatch({ type: Actions.model, payload: [false, null] });
-                location.reload();
-            } else {
-                dispatch({ type: Actions.loading, payload: false });
-                toast.error(message || "Something went wrong!");
-            }
-        } catch (error) {
-            toast.error(error.message || "Something went wrong!");
-        }
-    }
+
     const SubmitHandler = async () => {
         const code = otp.join("");
         if (code.length !== OTP_LENGTH) {
             triggerShake();
             toast.error("Enter complete OTP");
             return;
-        };
+        }
+
         try {
             dispatch({ type: Actions.loading, payload: true });
             const { success, message, data: D, error } = await AVendor.Verify({ phone: data.phone, otp: code });
+
             if (success) {
-                await SetSession({ token: D.token, user_id: D?._id, language: D?.language || "ENGLISH", is_profile_updated: D?.is_profile_updated });
-                dispatch({ type: Actions.user, payload: { ...D } });
+                const info = { token: D.token, vendor_id: D._id, language: "ENGLISH", ...D }
+                dispatch({ type: Actions.user, payload: info });
+                dispatch({ type: Actions.token, payload: info.token });
+                localStorage.setItem("token", info.token);
+                toast.success("Login successful!");
+                dispatch({ type: Actions.loading, payload: false });
             } else {
                 triggerShake();
                 dispatch({ type: Actions.loading, payload: false });
-                toast.error(error || message);
+                toast.error(error || message || "OTP verification failed");
             }
-        } catch (error) {
+        } catch (err) {
+            console.error('OTP verify submit error:', err);
             triggerShake();
             dispatch({ type: Actions.loading, payload: false });
-            toast.error(error.message);
+            toast.error(err.message || "Something went wrong!");
         }
     };
 

@@ -21,7 +21,7 @@ const IncommingOrdersCard = ({ lib }) => {
                 if (data?.status == "ONGOING") {
                     if (data?.type == "CALL") router.push(`/calls/${data?._id}`);
                     if (data?.type == "CHAT") router.push(`/chats/${data?._id}`);
-                    if (data?.type == "VCALL") router.push(`/v-calls/${data?._id}`);
+                    if (data?.type == "VCALL") router.push(`/vcalls/${data?._id}`);
                 } else {
                     router.refresh();
                 }

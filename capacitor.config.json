@@ -1,6 +1,14 @@
 {
-  "appId": "com.srisir.vendor",
-  "appName": "Sri Vendor",
-  "webDir": "dist",
-  "bundledWebRuntime": false
+    "appId": "com.sri.vendorapp",
+    "appName": "Sri Vendor App",
+    "webDir": "dist",
+    "bundledWebRuntime": false,
+    "plugins": {
+        "Camera": {
+            "permissions": [
+                "camera",
+                "microphone"
+            ]
+        }
+    }
 }

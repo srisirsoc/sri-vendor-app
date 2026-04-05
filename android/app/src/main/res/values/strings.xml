@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Sri Vendor</string>
-    <string name="title_activity_main">Sri Vendor</string>
-    <string name="package_name">com.srisir.vendor</string>
-    <string name="custom_url_scheme">com.srisir.vendor</string>
+    <string name="app_name">Sri Vendor App</string>
+    <string name="title_activity_main">Sri Vendor App</string>
+    <string name="package_name">com.sri.vendorapp</string>
+    <string name="custom_url_scheme">com.sri.vendorapp</string>
 </resources>

@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import "./style.css";
 
-const Loader = ({ height = "min-h-[70vh]" }) => {
+const Loader = ({ height = "70vh" }) => {
   return (
-    <div className={`flex justify-center items-center ${height}`} >
-      <div className='flex items-center gap-2 justify-center h-auto'>
-        <div className='loader'></div>
+    <div className="loader-container" style={{ minHeight: height }}>
+      <div className="loader-wrapper">
+        <div className="loader"></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Loader;

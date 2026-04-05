@@ -13,9 +13,8 @@ import {
     HiOutlineDocumentText
 } from "react-icons/hi2";
 
-/* ---------- USER LOGGED IN ---------- */
 const UserNav = [
-     {
+    {
         title: "Home Page",
         icon: <HiOutlineHome />,
         link: "/",
@@ -28,27 +27,27 @@ const UserNav = [
     {
         title: "Your Cart",
         icon: <HiOutlineShoppingCart />,
-        link: "/user/history?tab=cart",
+        link: "/history?tab=cart",
     },
     {
         title: "Call History",
         icon: <HiOutlinePhone />,
-        link: "/user/history?tab=CALL",
+        link: "/calls",
     },
     {
         title: "VCall History",
         icon: <HiOutlineVideoCamera />,
-        link: "/user/history?tab=VCALL",
+        link: "/vcalls",
     },
     {
         title: "Chat History",
         icon: <HiOutlineChatBubbleLeftRight />,
-        link: "/user/history?tab=CHAT",
+        link: "/chats",
     },
     {
         title: "Wallet History",
         icon: <HiOutlineWallet />,
-        link: "/user/history?tab=WALLET",
+        link: "/history?tab=WALLET",
     },
 ];
 
@@ -72,7 +71,7 @@ const WithoutUserLinks = [
     {
         title: "VCall Page",
         icon: <HiOutlineVideoCamera />,
-        link: "/v-calls",
+        link: "/vcalls",
     },
     {
         title: "Our Support",
@@ -116,7 +115,7 @@ const Navs = [
     {
         title: "VCall",
         icon: <HiOutlineVideoCamera />,
-        link: "/v-calls",
+        link: "/vcalls",
     },
     {
         title: "Support",

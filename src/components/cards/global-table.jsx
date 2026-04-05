@@ -3,7 +3,7 @@
 import { AiOutlineEye, AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import "./global.table.css";
 import EmptyState from "./empty-state.card";
-import { ISTDate } from "@/library/dates";
+import { ISTDate } from "../../library/dates";
 
 export default function GlobalTable({ data }) {
     if (!data) return;

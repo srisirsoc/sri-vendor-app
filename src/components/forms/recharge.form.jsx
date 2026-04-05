@@ -1,7 +1,7 @@
 
 'use client';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import React, { useContext, useState } from 'react';
 import { Context } from '../state/store-provider';
 import { Fields } from '@/constants/inputs';
@@ -13,7 +13,7 @@ import Buttons from '../tags/button.tag';
 import { Style } from '@/library/styles';
 
 const RechargeForm = ({ params, title, recharge }) => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const [data, setData] = useState({ ...recharge });
     const { state: { loading, user, data: puja }, dispatch } = useContext(Context);
 
@@ -37,7 +37,7 @@ const RechargeForm = ({ params, title, recharge }) => {
             if (success) {
                 toast.success(message);
                 dispatch({ type: Actions.State.data, payload: data });
-                navigate(`/admin/recharge/new/${res?._id}`);
+                router.push(`/admin/recharge/new/${res?._id}`);
                 dispatch({ type: Actions.State.loading, payload: false });
             } else {
                 dispatch({ type: Actions.State.loading, payload: false });
@@ -64,8 +64,8 @@ const RechargeForm = ({ params, title, recharge }) => {
                 toast.success(message);
                 dispatch({ type: Actions.State.loading, payload: false });
                 dispatch({ type: Actions.State.data, payload: data });
-                navigate(`/admin/recharge/`);
-                window.location.reload();
+                router.push(`/admin/recharge/`);
+                router.refresh();
             } else {
                 dispatch({ type: Actions.State.loading, payload: false });
                 toast.error(error || message || "Something went wrong!");

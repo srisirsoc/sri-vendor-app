@@ -1,11 +1,11 @@
 "use client";
 import React, { useContext } from "react";
 import { IconsReact } from "../../library/icons";
-import { useNavigate } from "react-router-dom";
-import { Context } from "../state/store-provider";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
+import { Context } from "../../store/store-provider";
 
-const Pagination = ({ page = 1, next, prev, pages, url, limit = 10 }) => {
+const Pagination = ({ page = 1, pages = 1, url, limit = 10 }) => {
     const navigate = useNavigate();
     const { state: { screen } } = useContext(Context);
 
@@ -14,9 +14,17 @@ const Pagination = ({ page = 1, next, prev, pages, url, limit = 10 }) => {
     const pageNumbers = [];
     for (let i = 1; i <= totalPages; i++) pageNumbers.push(i);
 
+    const prevPage = page > 1 ? page - 1 : 1;
+    const nextPage = page < totalPages ? page + 1 : totalPages;
+
+    const getPageUrl = (p) => {
+        if (!url.includes("?")) return `${url}?page=${p}`;
+        return `${url}&page=${p}`;
+    };
+
     const handlePageChange = (p) => {
         if (p && p !== page) {
-            navigate(`${url}&page=${p}`);
+            navigate(getPageUrl(p));
         }
     };
 
@@ -26,7 +34,7 @@ const Pagination = ({ page = 1, next, prev, pages, url, limit = 10 }) => {
                 {/* Left Icon */}
                 <div
                     className={`pagination-fixed pagination-left ${page === 1 ? "disabled" : ""}`}
-                    onClick={() => handlePageChange(prev)}
+                    onClick={() => handlePageChange(prevPage)}
                 >
                     {IconsReact.Left}
                 </div>
@@ -47,7 +55,7 @@ const Pagination = ({ page = 1, next, prev, pages, url, limit = 10 }) => {
                 {/* Right Icon */}
                 <div
                     className={`pagination-fixed pagination-right ${page === totalPages ? "disabled" : ""}`}
-                    onClick={() => handlePageChange(next)}
+                    onClick={() => handlePageChange(nextPage)}
                 >
                     {IconsReact.Right}
                 </div>
@@ -55,4 +63,5 @@ const Pagination = ({ page = 1, next, prev, pages, url, limit = 10 }) => {
         </div>
     );
 };
+
 export default Pagination;

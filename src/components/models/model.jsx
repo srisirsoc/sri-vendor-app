@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useContext } from 'react';
-import { Context } from '../state/store-provider';
-import Actions from '../state/actions';
 import { IconsReact } from '../../library/icons';
 import './model.css';
+import { Context } from '../../store/store-provider';
+import Actions from '../../store/actions';
 
 const Model = ({ children, width = 600, model_type }) => {
   const { state: { model }, dispatch } = useContext(Context);

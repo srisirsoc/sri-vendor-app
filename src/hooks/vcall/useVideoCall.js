@@ -1,13 +1,14 @@
 import { AVCall } from "@/actions/a.vcall";
 import { AVendor } from "@/actions/a.vendor";
-import { Context } from "@/components/state/store-provider";
-import { useRouter } from "next/navigation";
+import { Context } from "@/store/store-provider";
+import { useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect, useContext } from "react";
 import toast from "react-hot-toast";
+import { Camera } from '@capacitor/camera';
 
 export function useVideoCall(payload, socket, token) {
     const { dispatch } = useContext(Context);
-    const router = useRouter();
+    const navigate = useNavigate();
 
     const peer = useRef(null);
     const localStream = useRef(null);
@@ -44,7 +45,7 @@ export function useVideoCall(payload, socket, token) {
 
         setTimeout(async () => {
             try {
-                await createPeerConnection(state.is_caller);
+                await createPeerConnection(true);
                 setState(p => ({ ...p, is_reconnecting: false, reconnect_attempts: 0 }));
             } catch {
                 attemptReconnect();
@@ -53,8 +54,7 @@ export function useVideoCall(payload, socket, token) {
     };
 
     /* -------------------- PEER -------------------- */
-    const createPeerConnection = async (is_caller = false) => {
-        // CLEANUP (CRITICAL)
+    const createPeerConnection = async (is_caller) => {
         if (peer.current) {
             peer.current.close();
             peer.current = null;
@@ -90,13 +90,12 @@ export function useVideoCall(payload, socket, token) {
             if (candidate) socket.emit("vcall-ice", { candidate, ...payload });
         };
 
-        // ALWAYS CREATE TRACKS
+        await Camera.requestPermissions();
         localStream.current = await navigator.mediaDevices.getUserMedia({
             audio: true,
             video: { facingMode: state.camera_facing_mode }
         });
 
-        // SYNC STATE → TRACKS
         const audioTrack = localStream.current.getAudioTracks()[0];
         if (audioTrack) audioTrack.enabled = !state.is_muted;
 
@@ -109,9 +108,6 @@ export function useVideoCall(payload, socket, token) {
 
         if (localVideoRef.current) {
             localVideoRef.current.srcObject = localStream.current;
-            localVideoRef.current.onloadedmetadata = () => {
-                localVideoRef.current.play().catch(() => {});
-            };
         }
 
         remoteStream.current = new MediaStream();
@@ -119,17 +115,10 @@ export function useVideoCall(payload, socket, token) {
             remoteStream.current.addTrack(e.track);
             if (remoteVideoRef.current) {
                 remoteVideoRef.current.srcObject = remoteStream.current;
-                remoteVideoRef.current.onloadedmetadata = () => {
-                    remoteVideoRef.current.play().catch(() => {});
-                };
             }
         };
 
-        if (is_caller) {
-            setState(p => ({ ...p, is_caller: true }));
-        }
-
-        if (is_caller && peer.current.signalingState === "stable") {
+        if (peer.current.signalingState === "stable") {
             const offer = await peer.current.createOffer();
             await peer.current.setLocalDescription(offer);
             socket.emit("vcall-offer", { offer, ...payload });
@@ -137,7 +126,7 @@ export function useVideoCall(payload, socket, token) {
     };
 
     const handleOffer = async offer => {
-        if (!peer.current) await createPeerConnection(false);
+        if (!peer.current) await createPeerConnection(true);
         await peer.current.setRemoteDescription(offer);
         const answer = await peer.current.createAnswer();
         await peer.current.setLocalDescription(answer);
@@ -227,7 +216,7 @@ export function useVideoCall(payload, socket, token) {
             dispatch({ type: "model", payload: [false, null] });
             setState(p => ({ ...p, call_accepted: true }));
             StartTimer();
-            location.replace(`/v-calls/${data._id}`);
+            navigate(`/vcalls/${data._id}`, { replace: true });
         }
     };
 
@@ -242,7 +231,7 @@ export function useVideoCall(payload, socket, token) {
             EndCallCleanup();
             socket.emit("reject-vcall", payload);
             setState(prev => ({ ...prev, incoming: false }));
-            location.replace(`/`);
+            navigate(`/`, { replace: true });
         } else {
             toast.error(error || message)
         };
@@ -257,9 +246,9 @@ export function useVideoCall(payload, socket, token) {
         const { success, data, error, message } = await AVCall.Update(payload?.service_id, { field: "status:complete", data: {} }, token);
         if (success) {
             socket.emit("end-vcall", payload);
-            location.replace(`/`);
+            navigate(`/`, { replace: true });
         } else {
-            location.replace(`/`);
+            navigate(`/`, { replace: true });
             toast.error(error || message)
         };
     };

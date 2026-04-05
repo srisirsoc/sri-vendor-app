@@ -1,13 +1,11 @@
-"use client";
-import React, { useContext, useEffect, useState } from "react";
 import "./vendor.form.css";
-import { AVendor } from "@/actions/a.vendor";
-import Actions from "../state/actions";
-import { Context } from "../state/store-provider";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { AFiles } from "@/actions/a.files";
-import { IconsReact } from "@/library/icons";
+import { Context } from "../../store/store-provider";
+import { AFiles } from "../../actions/a.files";
+import { AVendor } from "../../actions/a.vendor";
+import { useContext, useEffect, useState } from "react";
+import Actions from "../../store/actions";
 
 function GetDesByCategory(category, data) {
     const d = data[category];
@@ -29,7 +27,7 @@ const VendorForm = ({ lib }) => {
     const category_details = { ...statics?.category_details };
     const vendor_about = { ...statics?.vendor_about };
     const vendorFields = [
-        { name: "category", label: "Category", type: "select", options: [...statics?.category], placeholder: "Select your main service category" },
+        { name: "category", label: "Category", type: "select", options: [...(statics?.category || [])], placeholder: "Select your main service category" },
         { name: "sub_category", label: "Category Description", type: "textarea", placeholder: GetDesByCategory(formData.category, category_details) },
     ];
     const objectFields = {
@@ -38,8 +36,8 @@ const VendorForm = ({ lib }) => {
             { name: "email", label: "Email", type: "email", placeholder: "Enter your email address" },
             { name: "dob", label: "Date of Birth", type: "date", placeholder: "Select your date of birth" },
             { name: "experience", label: "Experience", type: "number", placeholder: "Enter your over all experience" },
-            { name: "gender", label: "Gender", type: "select", options: [...statics?.gender], placeholder: "Select your gender" },
-            { name: "language", label: "Default Language", type: "select", options: [...statics?.language], placeholder: "Select your default language" },
+            { name: "gender", label: "Gender", type: "select", options: [...(statics?.gender || [])], placeholder: "Select your gender" },
+            { name: "language", label: "Default Language", type: "select", options: [...(statics?.language || [])], placeholder: "Select your default language" },
             { name: "languages", label: "Known Languages (eg: English, Hindi)", type: "text", placeholder: "Enter languages you know, separated by commas" },
             { name: "description", label: "Description", type: "textarea", placeholder: GetDesByCategory(formData.category, vendor_about) },
         ],
@@ -50,7 +48,7 @@ const VendorForm = ({ lib }) => {
             { name: "pincode", label: "Pincode", type: "number", placeholder: "Enter your area pincode" },
             { name: "country", label: "Country", type: "text", default: "India", placeholder: "Enter your country" },
             { name: "code", label: "Country Code", type: "text", default: "IN", placeholder: "Enter your country code" },
-            { name: "currency", label: "Currency", type: "select", options: [...statics?.currency], placeholder: "Select your currency" },
+            { name: "currency", label: "Currency", type: "select", options: [...(statics?.currency || [])], placeholder: "Select your currency" },
             { name: "coordinates", label: "Coordinates (lng,lat)", type: "text", placeholder: "Enter coordinates in lng,lat format" },
         ],
         documents: [
@@ -60,7 +58,7 @@ const VendorForm = ({ lib }) => {
             { name: "shop_registration", label: "Shop Registration", type: "text", placeholder: "Enter your shop registration number if applicable" },
         ],
         availability: [
-            { name: "is_available", label: "Is Available", type: "select", options: [...statics?.boolean], placeholder: "Select your availability status" },
+            { name: "is_available", label: "Is Available", type: "select", options: [...(statics?.boolean || [])], placeholder: "Select your availability status" },
             { name: "working_days", label: "Working Days (eg: Mon, Tue, Wed)", type: "text", placeholder: "Enter the days you work" },
             { name: "start_time", label: "Start Time", type: "time", placeholder: "Enter your start time" },
             { name: "end_time", label: "End Time", type: "time", placeholder: "Enter your end time" },
@@ -78,7 +76,7 @@ const VendorForm = ({ lib }) => {
     const arrayFields = {
         skills: [
             { name: "title", label: "Skill Title", type: "select", options: GetDesByCategory(formData?.category, skills_info), placeholder: "Select a skill from your category" },
-            { name: "level", label: "Skill Level", type: "select", options: [...statics?.skills_level], placeholder: "Select your skill level" },
+            { name: "level", label: "Skill Level", type: "select", options: [...(statics?.skills_level || [])], placeholder: "Select your skill level" },
             { name: "experience", label: "Experience (years)", type: "number", placeholder: "Enter years of experience for this skill" },
             { name: "certificates", label: "Certificates (comma separated)", type: "text", placeholder: "List your certificates related to this skill" },
             { name: "description", label: "Description", type: "textarea", placeholder: "Describe your expertise in this skill" },
@@ -92,9 +90,9 @@ const VendorForm = ({ lib }) => {
             { name: "name", label: "Service Name", type: "select", options: GetDesByCategory(formData.category, services_info), placeholder: "Select the service you offer" },
             { name: "price", label: "Price", type: "number", placeholder: "Enter the price of this service" },
             { name: "discounted_price", label: "Discounted Price", type: "number", placeholder: "Enter discounted price if applicable" },
-            { name: "service_at", label: "Service At", type: "select", options: [...statics?.service_at], placeholder: "Select where the service is provided" },
+            { name: "service_at", label: "Service At", type: "select", options: [...(statics?.service_at || [])], placeholder: "Select where the service is provided" },
             { name: "duration", label: "Duration", type: "text", placeholder: "Enter approximate duration of the service" },
-            { name: "is_active", label: "Is Active", type: "select", options: [...statics?.boolean], placeholder: "Select if this service is currently active" },
+            { name: "is_active", label: "Is Active", type: "select", options: [...(statics?.boolean || [])], placeholder: "Select if this service is currently active" },
             { name: "description", label: "Description", type: "textarea", placeholder: "Provide a short description of this service" },
         ]
     };
@@ -167,7 +165,7 @@ const VendorForm = ({ lib }) => {
                 toast.success(message);
                 dispatch({ type: Actions.loading, payload: false });
                 dispatch({ type: Actions.data, payload: res });
-                window.location.reload();
+                navigate(`/user/${user?.vendor_id}`);
             } else {
                 dispatch({ type: Actions.loading, payload: false });
                 toast.error(error || message || "Something went wrong!");
@@ -283,9 +281,6 @@ const VendorForm = ({ lib }) => {
             setGallery(lib.doc?.gallery || [])
         }
     }, [lib?.doc?._id]);
-
-    console.log(gallery);
-
 
     return (
         <div className="vendor-form-container">
