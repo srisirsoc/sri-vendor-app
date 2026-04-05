@@ -1,11 +1,11 @@
 'use client';
 
-import { ISTDate } from "@/library/dates";
-import { ACall } from "@/actions/a.call";
-import { AVCall } from "@/actions/a.vcall";
 import { useContext } from "react";
-import { Context } from "@/components/state/store-provider";
 import "./service.history.card.css";
+import { Context } from "../../store/store-provider";
+import { AVCall } from "../../actions/a.vcall";
+import { ACall } from "../../actions/a.call";
+import { ISTDate } from "../../library/dates";
 
 export default function OrderCompactCard({ item, type }) {
     if (!item) return null;
@@ -14,7 +14,7 @@ export default function OrderCompactCard({ item, type }) {
     const { name = "User", avatar = "/user.png", } = vendor;
 
     const columns = [
-        { key: "status", title: "Status"},
+        { key: "status", title: "Status" },
         { key: "amount", title: "Amount", symbol: "₹ ", side: "front" },
         { key: "duration", title: "Duration", symbol: " Sec", side: "back" },
         { key: "createdAt", title: "Date", type: 'date' },

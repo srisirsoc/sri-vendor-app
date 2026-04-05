@@ -1,4 +1,4 @@
-import EmojiList from "@/library/emoji.list";
+import EmojiList from "../../library/emoji.list";
 import "./emoji-card.css"
 export default function EmojiPicker({ onSelect }) {
     return (

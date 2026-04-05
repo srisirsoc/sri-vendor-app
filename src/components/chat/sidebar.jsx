@@ -7,9 +7,9 @@ import {
     FaThumbsUp,
     FaShare
 } from "react-icons/fa";
-import Link from "next/link";
-import { IconsReact } from "@/library/icons";
 import "./sidebar.css"
+import { IconsReact } from "../../library/icons";
+import { Link } from "react-router-dom";
 
 export default function Sidebar({ docs = [], toggle, setToggle }) {
 
@@ -19,7 +19,7 @@ export default function Sidebar({ docs = [], toggle, setToggle }) {
             <div className="sidebar-header">
                 <h3>Chats</h3>
                 <div className="back-button-c">
-                    <Link href={"/"} className="back-button">
+                    <Link to={"/"} className="back-button">
                         {IconsReact.Logout}
                     </Link>
                     <FaTimes className="close-icon" onClick={() => setToggle(false)} />
@@ -39,7 +39,7 @@ export default function Sidebar({ docs = [], toggle, setToggle }) {
                         const user = chat?.user || {};
                         return (
                             <Link
-                                href={`/chats/${chat?._id}`}
+                                to={`/chats/${chat?._id}`}
                                 key={i}
                                 className="sidebar-user"
                             >

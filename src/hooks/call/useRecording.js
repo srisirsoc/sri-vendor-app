@@ -1,14 +1,14 @@
 "use client";
 import { useRef, useState } from "react";
-import { socket } from "@/library/socket.client";
+import { socket } from "../../library/socket.client";
 
 const createRecordingStream = (local, remote) => {
     if (typeof window === "undefined" || !local || !remote) return null;
 
-    const ctx = new AudioContext();
-    const dest = ctx.createMediaStreamDestination();
-
     try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const dest = ctx.createMediaStreamDestination();
+
         const localSource = ctx.createMediaStreamSource(local);
         const remoteSource = ctx.createMediaStreamSource(remote);
 
@@ -26,15 +26,14 @@ export const useRecording = ({ payload }) => {
     const recorderRef = useRef(null);
     const chunksRef = useRef([]);
     const ctxRef = useRef(null);
-
     const [isRecording, setIsRecording] = useState(false);
 
     const startRecording = async (localStream, remoteStream) => {
         if (typeof window === "undefined" || !localStream || !remoteStream) return;
 
         try {
-            // Play start sound
-            await new Audio("/recording-start.mp3").play();
+            const startAudio = new Audio("/recording-start.mp3");
+            await startAudio.play();
             socket.emit("call-recording-started", payload);
 
             const result = createRecordingStream(localStream, remoteStream);
@@ -42,8 +41,13 @@ export const useRecording = ({ payload }) => {
 
             ctxRef.current = result.ctx;
 
+            if (!window.MediaRecorder) {
+                console.error("MediaRecorder not supported in this browser");
+                return;
+            }
+
             recorderRef.current = new MediaRecorder(result.stream, {
-                mimeType: "audio/webm;codecs=opus"
+                mimeType: "audio/webm;codecs=opus",
             });
 
             chunksRef.current = [];
@@ -53,12 +57,7 @@ export const useRecording = ({ payload }) => {
 
             recorderRef.current.onstop = () => {
                 const blob = new Blob(chunksRef.current, { type: "audio/webm" });
-                // Optional: auto-download or upload
-                // const url = URL.createObjectURL(blob);
-                // const a = document.createElement("a");
-                // a.href = url;
-                // a.download = "recording.webm";
-                // a.click();
+                // Optional: upload to server
                 chunksRef.current = [];
             };
 
@@ -73,7 +72,8 @@ export const useRecording = ({ payload }) => {
         if (!recorderRef.current) return;
 
         try {
-            await new Audio("/recording-stop.mp3").play();
+            const stopAudio = new Audio("/recording-stop.mp3");
+            await stopAudio.play();
             socket.emit("call-recording-stopped", payload);
 
             recorderRef.current.stop();

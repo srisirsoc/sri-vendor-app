@@ -11,9 +11,7 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "",
 };
 
-const firebaseApp = (firebaseConfig.apiKey && firebaseConfig.projectId && firebaseConfig.messagingSenderId && firebaseConfig.appId)
-  ? initializeApp(firebaseConfig)
-  : null;
+const firebaseApp = (firebaseConfig.apiKey && firebaseConfig.projectId && firebaseConfig.messagingSenderId && firebaseConfig.appId) ? initializeApp(firebaseConfig) : null;
 
 const getNotificationBaseUrl = () => import.meta.env.VITE_NOTIFICATION_BASE_URL || import.meta.env.VITE_BASE_URL || "";
 const getVapidKey = () => import.meta.env.VITE_FIREBASE_VAPID_KEY || "";
@@ -41,7 +39,6 @@ const sendTokenToServer = async ({ token, userId, authToken, topic, platform }) 
   const endpoint = `${baseUrl.replace(/\/+$/, "")}/notification/register-device`;
   const headers = { "Content-Type": "application/json" };
   if (authToken) headers.Authorization = `Bearer ${authToken}`;
-
   try {
     const response = await fetch(endpoint, {
       method: "POST",
@@ -71,7 +68,7 @@ const getWebFcmToken = async () => {
     throw new Error("Notification permission denied");
   }
 
-  const registration = await navigator.serviceWorker.register(buildWorkerUrl(), { scope: "/" });
+  const registration = await navigator.serviceWorker.register(buildWorkerUrl(), { scope: "/scripts/" });
   const messaging = getMessaging(firebaseApp);
   const token = await getToken(messaging, {
     serviceWorkerRegistration: registration,

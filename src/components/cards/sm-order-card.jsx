@@ -1,7 +1,5 @@
 import React from "react";
 import "./sm-order-card.css";
-import { ACall } from "@/actions/a.call";
-import { AVCall } from "@/actions/a.vcall";
 import toast from "react-hot-toast";
 
 const SmOrderToast = ({ data: order, token }) => {
@@ -12,7 +10,7 @@ const SmOrderToast = ({ data: order, token }) => {
             location.replace(`/calls/${_id}`);
         };
         if (type == "VCALL") {
-            location.replace(`/v-calls/${_id}`);
+            location.replace(`/vcalls/${_id}`);
         };
     };
     const onTerminate = async () => {

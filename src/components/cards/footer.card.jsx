@@ -49,10 +49,10 @@ const Footer = () => {
                         </p>
 
                         <div className="footer-social">
-                            <a href="#"><FaFacebookF /></a>
-                            <a href="#"><FaLinkedinIn /></a>
-                            <a href="#"><FaInstagram /></a>
-                            <a href="#"><FaTwitter /></a>
+                            <a to="#"><FaFacebookF /></a>
+                            <a to="#"><FaLinkedinIn /></a>
+                            <a to="#"><FaInstagram /></a>
+                            <a to="#"><FaTwitter /></a>
                         </div>
                     </div>
 
@@ -60,10 +60,10 @@ const Footer = () => {
                     <div className="footer-col">
                         <h4>Quick Links</h4>
                         <ul className="footer-list">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/#about">About</a></li>
-                            <li><a href="/#features">Features</a></li>
-                            <li><a href="/#blog">Blog</a></li>
+                            <li><a to="/">Home</a></li>
+                            <li><a to="/#about">About</a></li>
+                            <li><a to="/#features">Features</a></li>
+                            <li><a to="/#blog">Blog</a></li>
                         </ul>
                     </div>
 
@@ -73,15 +73,15 @@ const Footer = () => {
                         <ul className="footer-list icon-list">
                             <li>
                                 <IoChatbubbleOutline />
-                                <a href="/chats">Live Chat</a>
+                                <a to="/chats">Live Chat</a>
                             </li>
                             <li>
                                 <IoCallOutline />
-                                <a href="/calls">Voice Call</a>
+                                <a to="/calls">Voice Call</a>
                             </li>
                             <li>
                                 <IoVideocamOutline />
-                                <a href="/v-calls">Video Call</a>
+                                <a to="/vcalls">Video Call</a>
                             </li>
                         </ul>
                     </div>

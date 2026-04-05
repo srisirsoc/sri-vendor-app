@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Context } from '../state/store-provider';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import Inputs from '../tags/input.tag'; // Assuming it's a reusable component
 import TextArea from '../tags/textarea.tag';
 import Buttons from '../tags/button.tag';
@@ -110,7 +110,7 @@ const inputFields = [
 ];
 
 const BlogForm = ({ title, params, lib, tab }) => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const { state: { loading, user }, dispatch } = useContext(Context);
     const [data, setData] = useState({});
 
@@ -132,7 +132,7 @@ const BlogForm = ({ title, params, lib, tab }) => {
             const response = await ChadhavaSevaActions.Create(data, user.token);
             if (response.success) {
                 toast.success(response.message);
-                navigate('/admin/blog/add-new');
+                router.push('/admin/blog/add-new');
             } else {
                 toast.error(response.message || "Something went wrong!");
             }

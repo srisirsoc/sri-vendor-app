@@ -1,12 +1,13 @@
 "use client";
+import "./vcall.main.css";
 import React, { useEffect } from "react";
-import { socket } from "@/library/socket.client";
 import { useVideoCall } from "../../hooks/vcall/useVideoCall";
 import VideoCallConnected from "./vcall.connected";
 import { useSignaling } from "../../hooks/vcall/useSignaling";
-import "./vcall.main.css";
+import { useSocket } from "../../store/socket.provider";
 
 export default function VCallMain({ lib }) {
+    const socket = useSocket()
     const order = lib?.docs || {};
     const token = lib?.token;
     const service = order?.service || {};
@@ -27,7 +28,7 @@ export default function VCallMain({ lib }) {
         if (!order?._id) return;
         call.createPeerConnection(is_caller);
         call.StartTimer();
-    }, [order?._id]);
+    }, [order?._id, socket.connected]);
 
     return (
         <div className="call-main">

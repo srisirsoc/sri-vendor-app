@@ -2,9 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { IconsReact } from "../../library/icons";
 import toast from 'react-hot-toast';
-import Link from 'next/link';
-import { Context } from '../state/store-provider';
-import Actions from '../state/actions';
+import { Context } from '../../store/store-provider';
 
 const ShareWithPeople = () => {
     const [share, setShare] = useState("");
@@ -33,10 +31,10 @@ const ShareWithPeople = () => {
                 <br />
                 <div className="mx-auto flex justify-center">
                     <div className='flex items-center gap-3'>
-                        <Link onClick={HidePopup} target='_' href={`https://www.facebook.com/sharer/sharer.php?u=${share}`}><span className='text-5xl text-blue-600 rounded-full'> {IconsReact.Facebook}</span></Link>
-                        <Link onClick={HidePopup} target='_' href={`https://x.com/intent/post?url=${share}`}> <span className='text-5xl text-sky-400 rounded-full'> {IconsReact.Twitter}</span></Link>
-                        <Link onClick={HidePopup} target='_' href={`https://web.whatsapp.com/send?text=${share}`}> <span className='text-5xl text-green-500 rounded-full'> {IconsReact.Whatsapp}</span></Link>
-                        <Link onClick={HidePopup} target='_' href={`http://www.linkedin.com/shareArticle?mini=true&url=${share}`}><span className='text-5xl text-sky-600 rounded-full'> {IconsReact.Linkedin}</span></Link>
+                        <Link onClick={HidePopup} target='_' to={`https://www.facebook.com/sharer/sharer.php?u=${share}`}><span className='text-5xl text-blue-600 rounded-full'> {IconsReact.Facebook}</span></Link>
+                        <Link onClick={HidePopup} target='_' to={`https://x.com/intent/post?url=${share}`}> <span className='text-5xl text-sky-400 rounded-full'> {IconsReact.Twitter}</span></Link>
+                        <Link onClick={HidePopup} target='_' to={`https://web.whatsapp.com/send?text=${share}`}> <span className='text-5xl text-green-500 rounded-full'> {IconsReact.Whatsapp}</span></Link>
+                        <Link onClick={HidePopup} target='_' to={`http://www.linkedin.com/shareArticle?mini=true&url=${share}`}><span className='text-5xl text-sky-600 rounded-full'> {IconsReact.Linkedin}</span></Link>
                     </div>
                 </div>
                 <br />

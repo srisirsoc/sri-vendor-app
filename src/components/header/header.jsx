@@ -1,37 +1,31 @@
-"use client";
-
+import "./header.style.css";
 import React, { useContext, useEffect, useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-
-import { Navs } from "@/library/user.nav";
-import { IconsReact } from "@/library/icons";
-import { Context } from "../state/store-provider";
 import Container from "../cards/container.card";
 import UserMenu from "./user-menu";
 import NavMenu from "./nav-menu";
+import { Context } from "../../store/store-provider";
+import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { IconsReact } from '../../library/icons';
+import Actions from "../../store/actions";
+import { AVendor } from "../../actions/a.vendor";
+import { Navs } from "../../library/user.nav";
 
-import { AUser } from "@/actions/a.user";
-import AStore from "@/actions/a.store";
-
-import "./header.style.css";
-
-const Header = ({ language = "ENGLISH" }) => {
-    const router = useRouter();
+const Header = () => {
+    const router = useNavigate();
     const { state, dispatch } = useContext(Context);
     const { user, screen = [], cart = { items: [] } } = state;
 
     const [menu, setMenu] = useState(false);
     const [nav, setNav] = useState(false);
-    const [lang, setLang] = useState(language);
 
     const isDesktop = screen?.[0] > 500;
     const name = user?.name?.split(" ")[0] || "User";
     const getScreenSize = () => typeof window !== "undefined" ? [window.innerWidth, window.innerHeight] : [0, 0];
     useEffect(() => {
-        dispatch({ type: AStore.cart, payload: {} });
-        const handleResize = () => dispatch({ type: AStore.screen, payload: getScreenSize() });
+        dispatch({ type: Actions.cart, payload: {} });
+        const handleResize = () => dispatch({ type: Actions.screen, payload: getScreenSize() });
         handleResize();
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
@@ -56,7 +50,7 @@ const Header = ({ language = "ENGLISH" }) => {
 
             case "lng":
                 if (!value) return;
-                const { success } = await AUser.Session({ language: value });
+                const { success } = await AVendor.Session({ language: value });
                 if (success) {
                     toast.success("Language changed successfully!");
                     setLang(value);
@@ -77,7 +71,7 @@ const Header = ({ language = "ENGLISH" }) => {
                     <div className="header-container">
                         {/* LEFT */}
                         <div className="header-left">
-                            <Link href="/" className="logo">
+                            <Link to="/" className="logo">
                                 Srisir
                             </Link>
                         </div>
@@ -89,7 +83,7 @@ const Header = ({ language = "ENGLISH" }) => {
                                     {Navs.map((item, i) => (
                                         <Link
                                             key={i}
-                                            href={item.link || "/"}
+                                            to={item.link || "/"}
                                             className="nav-link"
                                         >
                                             {item.title}

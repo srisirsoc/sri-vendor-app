@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import { IconsReact } from "@/library/icons";
 import Container from "../cards/container.card";
 import "./top.header.css"
-const TopHeader = ({ user }) => {
+import { IconsReact } from "../../library/icons";
+const TopHeader = () => {
     return (
         <div className="top-header-modern">
             <Container>

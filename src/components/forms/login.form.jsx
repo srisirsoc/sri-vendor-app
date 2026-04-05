@@ -1,14 +1,14 @@
 'use client';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
-import Actions from "../state/actions";
-import { Context } from '../state/store-provider';
+
 import './login.form.css';
-import { AVendor } from '@/actions/a.vendor';
+import Actions from '../../store/actions';
+import { Context } from '../../store/store-provider';
+import { AVendor } from '../../actions/a.vendor';
+
 
 const LoginForm = () => {
-    const router = useRouter();
     const [data, setData] = useState({ phone: '' });
     const [error, setError] = useState('');
 

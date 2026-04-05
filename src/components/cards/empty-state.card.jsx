@@ -1,8 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { IconsReact } from '../../library/icons';
 import './empty-state.card.css';
+import { useNavigate } from 'react-router-dom';
 
 const EmptyState = ({
   title = 'No data found!',
@@ -12,13 +12,13 @@ const EmptyState = ({
   reload = true,
   is_auth_error = false,
 }) => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState({ reload: false, goback: false });
 
   const Reload = () => {
     setLoading({ reload: true, goback: false });
     setTimeout(() => {
-      router.refresh();
+      navigate(0);
       setLoading({ reload: false, goback: false });
     }, 500);
   };
@@ -26,7 +26,7 @@ const EmptyState = ({
   const GoBack = () => {
     setLoading({ reload: false, goback: true });
     setTimeout(() => {
-      router.back();
+      navigate(-1);
       setLoading({ reload: false, goback: false });
     }, 500);
   };

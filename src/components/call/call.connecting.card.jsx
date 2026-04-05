@@ -2,14 +2,15 @@
 import { FaPhoneAlt, FaRedo, FaPhoneSlash, FaAudible } from "react-icons/fa";
 import { useCall } from "../../hooks/call/useCall";
 import { useSignaling } from "../../hooks/call/useSignaling";
-import { socket } from "@/library/socket.client";
 import { useRouter } from "next/navigation";
 import "./call.connecting.card.css";
+import { useSocket } from "../../store/socket.provider";
 
 export default function CallConnecting({ order, token }) {
     const user = order?.user || {};
     const service = order?.service || {};
     const router = useRouter();
+    const socket = useSocket(); // Assuming socket is globally available
 
     const payload = {
         room_id: service?.token,

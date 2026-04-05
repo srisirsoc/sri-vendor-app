@@ -1,24 +1,47 @@
+/* Container to center loader */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Inner wrapper to control gap/alignment if needed */
+.loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  /* equivalent to gap-2 */
+  height: auto;
+}
+
+/* Loader animation */
 .loader {
   width: 50px;
   aspect-ratio: 1;
   display: grid;
   color: #514b82;
-  background: 
-    conic-gradient(from 90deg at 3px 3px,#0000 90deg,currentColor 0)
-    -3px -3px/calc(50% + 1.5px) calc(50% + 1.5px);
-  animation: l28 2s infinite;
+  background:
+    conic-gradient(from 90deg at 3px 3px, #0000 90deg, currentColor 0) -3px -3px/calc(50% + 1.5px) calc(50% + 1.5px);
+  animation: spin 2s infinite linear;
+  border-radius: 50%;
 }
+
 .loader::before,
 .loader::after {
   content: "";
-  grid-area: 1/1;
-  background: repeating-conic-gradient(#0000 0 35deg,currentColor 0 90deg);
-  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 3px),#000 0);
+  grid-area: 1 / 1;
+  background: repeating-conic-gradient(#0000 0 35deg, currentColor 0 90deg);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 3px), #000 0);
   border-radius: 50%;
 }
+
 .loader::after {
   margin: 20%;
 }
-@keyframes l28 {
-  100% {transform: rotate(1turn)}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
 }

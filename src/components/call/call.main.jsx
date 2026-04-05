@@ -1,14 +1,14 @@
 "use client";
+import "./call.main.css";
 import React, { useEffect } from "react";
-import dynamic from "next/dynamic";
 import CallConnected from "./call.connected.card";
 import { useCall } from "../../hooks/call/useCall";
 import { useRecording } from "../../hooks/call/useRecording";
 import { useSignaling } from "../../hooks/call/useSignaling";
-import { socket } from "@/library/socket.client";
-import "./call.main.css";
+import { useSocket } from "../../store/socket.provider";
 
-function CallMain({ lib }) {
+function CallsPage({ lib }) {
+    const socket = useSocket(); // Assuming socket is globally available
     const order = lib?.docs || {};
     const token = lib.token;
     const service = order?.service || {};
@@ -62,4 +62,4 @@ function CallMain({ lib }) {
     );
 }
 
-export default dynamic(() => Promise.resolve(CallMain), { ssr: false });
+export default CallsPage;

@@ -1,15 +1,17 @@
 "use client";
 import { useEffect } from "react";
 import { FaAudible, FaPhoneAlt, FaPhoneSlash } from "react-icons/fa";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 import { useCall } from "../../hooks/call/useCall";
 import { useSignaling } from "../../hooks/call/useSignaling";
-import { socket } from "@/library/socket.client";
 import "./incomming.call.card.css";
-import { useMediaSupport } from "@/hooks/useMediaSupport";
+import { useSocket } from "../../store/socket.provider";
+import { useMediaSupport } from "../../hooks/useMediaSupport";
 
 export default function IncomingCallCard({ order, token }) {
-    const router = useRouter();
+    const navigate = useNavigate();
+    const socket = useSocket(); // Assuming socket is globally available
+
     const user = order?.user || {};
     const service = order?.service || {};
 
@@ -23,9 +25,7 @@ export default function IncomingCallCard({ order, token }) {
 
     const is_caller = false;
     const call = useCall(payload, socket, is_caller, token);
-
-    useSignaling({ payload, call, socket, onEnd: () => location.replace("/") });
-
+    useSignaling({ payload, call, socket, onEnd: () => navigate("/", { replace: true }) });
     const { acceptCall, error } = useMediaSupport({ call });
 
     const handleAccept = () => {
@@ -36,16 +36,21 @@ export default function IncomingCallCard({ order, token }) {
 
     useEffect(() => {
         if (!call.ringtoneRef.current) return;
+
         const audio = call.ringtoneRef.current;
         audio.loop = true;
         audio.play().catch(() => { });
-        return () => { audio.pause(); audio.currentTime = 0 };
+
+        return () => {
+            audio.pause();
+            audio.currentTime = 0;
+        };
     }, [order?._id]);
 
     const handleDecline = async () => {
         await call.RejectCall();
         call.ringtoneRef.current?.pause();
-        router.replace("/");
+        navigate("/", { replace: true });
     };
 
     return (

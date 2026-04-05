@@ -1,11 +1,10 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { usePathname, useRouter } from 'next/navigation';
 
 const SearchForm = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const pathname = location.pathname;
+    const router = useRouter();
+    const pathname = usePathname();
     const [data, setData] = useState({});
 
     const InputHandler = (e) => {
@@ -21,9 +20,9 @@ const SearchForm = () => {
         if (data.query) {
             const params = new URLSearchParams();
             params.set("query", data.query);
-            navigate(`${pathname}?${params.toString()}`);
+            router.push(`${pathname}?${params.toString()}`);
         } else {
-            navigate(`${pathname}`);
+            router.push(`${pathname}`);
         }
     }, [data.query])
 

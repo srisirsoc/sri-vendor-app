@@ -1,6 +1,6 @@
 'use client';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import React, { useContext, useState } from 'react';
 import ImgTags from '@/components/tags/image.tag';;
 import { Context } from '../state/store-provider';
@@ -13,7 +13,7 @@ import { Style } from '@/library/styles';
 
 
 const UserProfileForm = ({ user: user_data }) => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const [data, setData] = useState({ ...user_data });
     const InputField = [Fields.name, Fields.email, Fields.pincode, Fields.address, Fields.date_of_birth]
     const { state: { loading, user }, dispatch } = useContext(Context);
